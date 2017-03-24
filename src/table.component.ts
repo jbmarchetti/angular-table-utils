@@ -13,7 +13,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
           <thead>
             <tr>
               <th *ngFor='let field of fields'>
-                <mfDefaultSorter by="{{field.field}}" *ngIf='field.field'>{{field.field}}</mfDefaultSorter>
+                <mfDefaultSorter by="{{field.field}}" *ngIf='field.field'>{{field.label || field.field}}</mfDefaultSorter>
               </th>
             </tr>
           </thead>
