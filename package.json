@@ -1,7 +1,7 @@
 {
   "name": "angular-table-utils",
-  "version": "0.0.1",
   "description": "Angular2 data table utils",
+  "version": "0.0.1",
   "main": "./bundles/angular-table-utils.umd.js",
   "module": "./index.js",
   "typings": "./index.d.ts",
