@@ -18,14 +18,14 @@ export class DemoComponent {
     title: 'My list',
     csv: { label: 'CSV Export', title: 'Components csv' },
     create: { label: 'Create a new component' },
-    translateKey: ''
+    // translate: { key: '' }
   }
 
   fields: any[] =
   [
-    { field: 'id', text: true },
-    { field: 'name', text: true },
-    { field: 'active', boolean: true }
+    { field: 'id', text: true, label: 'Id' },
+    { field: 'name', text: true, label: 'Name' },
+    { field: 'active', boolean: true, label: 'Active' }
   ]
 
   actionCallBack($event: any): void {

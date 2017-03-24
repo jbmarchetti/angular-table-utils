@@ -98,7 +98,6 @@
     }
   },
   "dependencies": {
-    "angular2-datatable": "^0.5.3",
-    "@ngx-translate/core": "^6.0.0"
+    "angular2-datatable": "^0.5.3"
   }
 }

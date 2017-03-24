@@ -1,21 +1,20 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'tw-table',
   template: `
     <div class="card">
       <div class="card-header">
-        <strong  *ngIf='options.title'>{{options.title | translate}}</strong>
-        <button *ngIf='options.csv' class='btn btn-sm btn-success pull-right' (click)='exportToCSV()'><i class='fa fa-file-excel-o'> {{options.csv.label | translate}}</i></button>
-        <button *ngIf='options.create' class='btn btn-sm btn-success pull-right' (click)='onAction(null, "create")'><i class='fa fa-plus'> {{options.create.label | translate}}</i></button>
+        <strong  *ngIf='options.title'>{{options.title}}</strong>
+        <button *ngIf='options.csv' class='btn btn-sm btn-success pull-right' (click)='exportToCSV()'><i class='fa fa-file-excel-o'> {{options.csv.label}}</i></button>
+        <button *ngIf='options.create' class='btn btn-sm btn-success pull-right' (click)='onAction(null, "create")'><i class='fa fa-plus'> {{options.create.label}}</i></button>
       </div>
       <div class="card-block scroll-x">
         <table class="table table-striped table-bordered tickets-list table-responsive" [mfData]="items" #mf="mfDataTable" [mfRowsOnPage]="20">
           <thead>
             <tr>
               <th *ngFor='let field of fields'>
-                <mfDefaultSorter by="{{field.field}}" *ngIf='field.field'>{{options.translateKey+field.field | translate}}</mfDefaultSorter>
+                <mfDefaultSorter by="{{field.field}}" *ngIf='field.field'>{{field.field}}</mfDefaultSorter>
               </th>
             </tr>
           </thead>
@@ -29,10 +28,10 @@ import { TranslateService } from '@ngx-translate/core';
                 <div *ngFor='let action of field.actions'>
                   <button *ngIf='action.type==="button" && showWithConditions(action, item[action.condition])' class='btn btn-{{action.class}} btn-sm'
                     (click)='onAction(i, action.action, item)'><i class="fa fa-{{action.icon}}"></i> 
-                    {{action.text | translate}}
+                    {{action.text}}
                     </button>
                   <span *ngIf='action.type==="text"  && showWithConditions(action, item[action.condition])'>
-                    {{action.text | translate}}
+                    {{action.text}}
                     </span>
                 </div>
                 <div *ngIf='field.list'>
@@ -65,7 +64,6 @@ export class TableComponent {
   public BOM: string = '\ufeff';
   public DEFAULT_FIELD_SEPARATOR: string = ';';
 
-  constructor(private translator: TranslateService) { }
 
   onAction(index: number, type: string, item: any = null, subItem: any = null): void {
     this.action.next(
@@ -106,7 +104,7 @@ export class TableComponent {
     document.body.appendChild(a);
     // a.style = 'display: none';
     a.href = url;
-    a.download = this.translator.instant(this.options.csv.title).replace(/ /g, '_') + '.csv';
+    a.download = this.options.csv.title.replace(/ /g, '_') + '.csv';
     a.click();
     window.URL.revokeObjectURL(url);
   }
@@ -117,7 +115,7 @@ export class TableComponent {
     let row: string[] = []
     this.fields.forEach((field: any) => {
       if (!field.actions)
-        row.push(this.translator.instant(this.options.translateKey + field.field))
+        row.push(field.field)
     })
     return row.join(this.DEFAULT_FIELD_SEPARATOR)
   }
