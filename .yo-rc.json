@@ -1,0 +1,13 @@
+{
+  "generator-angular-library": {
+    "githubUsername": "jbmarchetti",
+    "githubRepoName": "angular-table-utils",
+    "npmModuleName": "angular-table-utils",
+    "moduleGlobal": "angularTableUtils",
+    "ngModuleName": "AngularTableUtilsModule",
+    "selectorPrefix": "tw",
+    "projectTitle": "angular table utils",
+    "projectDescription": "",
+    "authorName": "Jean Baptiste Marchetti"
+  }
+}
