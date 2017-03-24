@@ -5,7 +5,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   template: `
     <div class="card">
       <div class="card-header">
-        <h2 *ngIf='options.title' >{{options.title}}</h2>
+        <strong *ngIf='options.title' >{{options.title}}</strong>
         <button *ngIf='options.create' class='btn btn-success pull-right' (click)='onAction(null, "create")'><i class='fa fa-plus'> {{options.create.label}}</i></button>
       </div>
       <div class="card-block scroll-x">
