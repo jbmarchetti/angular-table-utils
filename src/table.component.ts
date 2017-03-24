@@ -5,9 +5,8 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   template: `
     <div class="card">
       <div class="card-header">
-        <strong  *ngIf='options.title'>{{options.title}}</strong>
-        <button *ngIf='options.csv' class='btn btn-sm btn-success pull-right' (click)='exportToCSV()'><i class='fa fa-file-excel-o'> {{options.csv.label}}</i></button>
-        <button *ngIf='options.create' class='btn btn-sm btn-success pull-right' (click)='onAction(null, "create")'><i class='fa fa-plus'> {{options.create.label}}</i></button>
+        <h2 *ngIf='options.title' >{{options.title}}</h2>
+        <button *ngIf='options.create' class='btn btn-success pull-right' (click)='onAction(null, "create")'><i class='fa fa-plus'> {{options.create.label}}</i></button>
       </div>
       <div class="card-block scroll-x">
         <table class="table table-striped table-bordered tickets-list table-responsive" [mfData]="items" #mf="mfDataTable" [mfRowsOnPage]="20">
@@ -49,6 +48,9 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
             </tr>
           </tfoot>
         </table>
+      </div>
+      <div class='card-footer'>
+            <button *ngIf='options.csv' class='btn btn-primary ' (click)='exportToCSV()'><i class='fa fa-file-excel-o'> {{options.csv.label}}</i></button>
       </div>
     </div>`
 })
