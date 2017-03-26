@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, AfterViewInit } from '@angular/core';
+import { AfterViewInit, OnChanges, Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormGroup } from '@angular/forms'
 import { FormField } from 'angular-forms-utils'
 
@@ -11,10 +11,8 @@ import { FormField } from 'angular-forms-utils'
         <button *ngIf='options.create' class='btn btn-success pull-right' (click)='onAction(null, "create")'><i class='fa fa-plus'> {{options.create.label}}</i></button>
       </div>
       <div class="card-block scroll-x">
-
+      <strong *ngIf='options.filters' >Filtres</strong>
       <tw-reactive-form *ngIf='options.filters' [fields]='options.filters' [form]='form' [request]='filtersModel'></tw-reactive-form>
-
-      {{filtersModel | json}}
         <table class="table table-striped table-bordered tickets-list table-responsive" [mfData]="displayedItems" #mf="mfDataTable" [mfRowsOnPage]="20">
           <thead>
             <tr>
@@ -60,7 +58,7 @@ import { FormField } from 'angular-forms-utils'
       </div>
     </div>`
 })
-export class TableComponent implements OnInit, AfterViewInit {
+export class TableComponent implements OnInit, AfterViewInit, OnChanges {
 
   @Input() items: any
   @Input() fields: any[]
@@ -82,8 +80,10 @@ export class TableComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.displayedItems = this.items
+  }
 
-
+  ngOnChanges(changes: SimpleChanges): void {
+    this.displayedItems = changes['items'].currentValue
   }
 
   ngAfterViewInit(): void {
