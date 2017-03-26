@@ -1,4 +1,6 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, AfterViewInit } from '@angular/core';
+import { FormGroup } from '@angular/forms'
+import { FormField } from 'angular-forms-utils'
 
 @Component({
   selector: 'tw-table',
@@ -9,7 +11,11 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
         <button *ngIf='options.create' class='btn btn-success pull-right' (click)='onAction(null, "create")'><i class='fa fa-plus'> {{options.create.label}}</i></button>
       </div>
       <div class="card-block scroll-x">
-        <table class="table table-striped table-bordered tickets-list table-responsive" [mfData]="items" #mf="mfDataTable" [mfRowsOnPage]="20">
+
+      <tw-reactive-form *ngIf='options.filters' [fields]='options.filters' [form]='form' [request]='filtersModel'></tw-reactive-form>
+
+      {{filtersModel | json}}
+        <table class="table table-striped table-bordered tickets-list table-responsive" [mfData]="displayedItems" #mf="mfDataTable" [mfRowsOnPage]="20">
           <thead>
             <tr>
               <th *ngFor='let field of fields'>
@@ -54,7 +60,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
       </div>
     </div>`
 })
-export class TableComponent {
+export class TableComponent implements OnInit, AfterViewInit {
 
   @Input() items: any
   @Input() fields: any[]
@@ -65,6 +71,62 @@ export class TableComponent {
   public EOL: string = '\r\n';
   public BOM: string = '\ufeff';
   public DEFAULT_FIELD_SEPARATOR: string = ';';
+
+  public form: FormGroup = new FormGroup({});
+  public filtersModel: any = {}
+
+  public filters: any[] = []
+  public keyword: string
+
+  public displayedItems: any
+
+  ngOnInit(): void {
+    this.displayedItems = this.items
+
+
+  }
+
+  ngAfterViewInit(): void {
+    if (this.options.filters) {
+      this.options.filters.forEach((filter: FormField) => {
+        if (filter.type === 'select')
+          filter.options = this.items
+        filter.control.valueChanges.subscribe((value: any) => {
+          this.updateFilters(filter.id, value)
+        })
+      })
+    }
+  }
+
+
+  public updateFilters(filter: string, values?: any[]): void {
+    this.filters[filter] = values
+    this.search()
+  }
+
+
+  public search(): void {
+
+    this.displayedItems = this.items.filter((data: any) => {
+      /*FILTERS*/
+      if (this.options.filters)
+        for (var i in this.filters) {
+          if (!(new RegExp('(' + this.filters[i] + ')', 'i').test(data[i].toString()) || !this.filters[i] || this.filters[i].toString() === ''))
+            return false
+        }
+
+      /*FULL TEXT*/
+      if (this.options.fulltext)
+        for (var j in this.options.fulltext) {
+          let test: string = data[this.options.fulltext[j]] ? data[this.options.fulltext[j]].toString() : ''
+          if (!(new RegExp(this.keyword, 'i')).test(test))
+            return false
+        }
+
+      return true
+    })
+
+  }
 
 
   onAction(index: number, type: string, item: any = null, subItem: any = null): void {
