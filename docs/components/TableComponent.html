@@ -716,7 +716,7 @@ export class TableComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     if (this.options.filters) {
       this.options.filters.forEach((filter: FormField) &#x3D;&gt; {
-        if (filter.type &#x3D;&#x3D;&#x3D; &#x27;select&#x27;)
+        if (filter.type &#x3D;&#x3D;&#x3D; &#x27;select&#x27; &amp;&amp; !filter.options)
           filter.options &#x3D; this.items
         filter.control.valueChanges.subscribe((value: any) &#x3D;&gt; {
           this.updateFilters(filter.id, value)
