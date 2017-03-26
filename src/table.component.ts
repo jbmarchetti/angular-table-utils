@@ -89,7 +89,7 @@ export class TableComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     if (this.options.filters) {
       this.options.filters.forEach((filter: FormField) => {
-        if (filter.type === 'select')
+        if (filter.type === 'select' && !filter.options)
           filter.options = this.items
         filter.control.valueChanges.subscribe((value: any) => {
           this.updateFilters(filter.id, value)
