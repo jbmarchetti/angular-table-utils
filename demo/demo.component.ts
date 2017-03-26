@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FormField, IFormField } from 'angular-forms-utils'
+
 @Component({
   selector: 'tw-demo-app',
   template: '<h1>Table</h1><tw-table *ngIf=\'items\' [options]=\'tableOptions\' [items]=\'items\' [fields]=\'fields\' (action)=\'actionCallBack($event)\'></tw-table>'
@@ -18,8 +20,16 @@ export class DemoComponent {
     title: 'My list',
     csv: { label: 'CSV Export', title: 'Components csv' },
     create: { label: 'Create a new component' },
+    filters: [
+      new FormField(<IFormField>{ id: 'id', type: 'select', label: 'Name filter', options: [], optionText: 'name', optionValue: 'id', firstValue: { text: 'Tous' } }),
+      new FormField(<IFormField>{ id: 'active', type: 'boolean', label: 'Active filter' }),
+      // new FormField(<IFormField>{ id: 'name', type: 'select', label: 'Input Number' }),
+      // new FormField(<IFormField>{ id: 'email', type: 'email', label: 'Input Email' })
+    ]
     // translate: { key: '' }
   }
+
+
 
   fields: any[] =
   [

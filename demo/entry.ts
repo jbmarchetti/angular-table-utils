@@ -5,8 +5,8 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DemoModule } from './demo.module';
 
 declare const ENV: string;
-if (ENV === 'production') {
-  enableProdMode();
-}
+// if (ENV === 'production') {
+enableProdMode();
+// }
 
 platformBrowserDynamic().bootstrapModule(DemoModule);
