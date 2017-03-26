@@ -278,7 +278,7 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><code>&lt;div&nbsp;class&#x3D;&quot;card&quot;&gt;<br>&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;card-header&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;strong&nbsp;*ngIf&#x3D;&#x27;options.title&#x27;&nbsp;&gt;{{options.title}}&lt;/strong&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;button&nbsp;*ngIf&#x3D;&#x27;options.create&#x27;&nbsp;class&#x3D;&#x27;btn&nbsp;btn-success&nbsp;pull-right&#x27;&nbsp;(click)&#x3D;&#x27;onAction(null,&nbsp;&quot;create&quot;)&#x27;&gt;&lt;i&nbsp;class&#x3D;&#x27;fa&nbsp;fa-plus&#x27;&gt;&nbsp;{{options.create.label}}&lt;/i&gt;&lt;/button&gt;<br>&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;card-block&nbsp;scroll-x&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;table&nbsp;class&#x3D;&quot;table&nbsp;table-striped&nbsp;table-bordered&nbsp;tickets-list&nbsp;table-responsive&quot;&nbsp;[mfData]&#x3D;&quot;items&quot;&nbsp;#mf&#x3D;&quot;mfDataTable&quot;&nbsp;[mfRowsOnPage]&#x3D;&quot;20&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;thead&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&nbsp;*ngFor&#x3D;&#x27;let&nbsp;field&nbsp;of&nbsp;fields&#x27;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mfDefaultSorter&nbsp;by&#x3D;&quot;{{field.field}}&quot;&nbsp;*ngIf&#x3D;&#x27;field.field&#x27;&gt;{{field.label&nbsp;||&nbsp;field.field}}&lt;/mfDefaultSorter&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/th&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/thead&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tbody&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&nbsp;*ngFor&#x3D;&quot;let&nbsp;item&nbsp;of&nbsp;mf.data;let&nbsp;i&nbsp;&#x3D;&nbsp;index&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&nbsp;*ngFor&#x3D;&#x27;let&nbsp;field&nbsp;of&nbsp;fields&#x27;&nbsp;[ngClass]&#x3D;&quot;field.class&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&#x27;field.tag&#x27;&nbsp;class&#x3D;&quot;tag&nbsp;tag-info&quot;&nbsp;[ngClass]&#x3D;&quot;item[field.field]&quot;&gt;{{item[field.field]}}&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&#x27;field.boolean&#x27;&nbsp;class&#x3D;&quot;tag&quot;&nbsp;[ngClass]&#x3D;&quot;item[field.field]&nbsp;?&nbsp;&#x27;tag-success&#x27;&nbsp;:&nbsp;&#x27;tag-danger&#x27;&quot;&gt;&lt;i&nbsp;class&#x3D;&#x27;fa&#x27;&nbsp;[ngClass]&#x3D;&quot;item[field.field]&nbsp;?&nbsp;&#x27;fa-thumbs-up&#x27;&nbsp;:&nbsp;&#x27;fa-thumbs-down&#x27;&quot;&gt;&lt;/i&gt;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&#x27;field.text&#x27;&gt;{{item[field.field]&nbsp;|&nbsp;twDash}}&lt;/span&gt;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;*ngFor&#x3D;&#x27;let&nbsp;action&nbsp;of&nbsp;field.actions&#x27;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button&nbsp;*ngIf&#x3D;&#x27;action.type&#x3D;&#x3D;&#x3D;&quot;button&quot;&nbsp;&amp;&amp;&nbsp;showWithConditions(action,&nbsp;item[action.condition])&#x27;&nbsp;class&#x3D;&#x27;btn&nbsp;btn-{{action.class}}&nbsp;btn-sm&#x27;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(click)&#x3D;&#x27;onAction(i,&nbsp;action.action,&nbsp;item)&#x27;&gt;&lt;i&nbsp;class&#x3D;&quot;fa&nbsp;fa-{{action.icon}}&quot;&gt;&lt;/i&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{action.text}}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/button&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&#x27;action.type&#x3D;&#x3D;&#x3D;&quot;text&quot;&nbsp;&nbsp;&amp;&amp;&nbsp;showWithConditions(action,&nbsp;item[action.condition])&#x27;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{action.text}}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;*ngIf&#x3D;&#x27;field.list&#x27;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngFor&#x3D;&#x27;let&nbsp;l&nbsp;of&nbsp;item[field.list];let&nbsp;j&nbsp;&#x3D;&nbsp;index&#x27;&nbsp;(click)&#x3D;&#x27;onAction(j,&nbsp;field.action,&nbsp;item,&nbsp;l)&#x27;&nbsp;[ngClass]&#x3D;&#x27;l[field.classAttr]&#x27;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&#x3D;&#x27;{{field.classLi}}&#x27;&gt;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tbody&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tfoot&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&nbsp;colspan&#x3D;&quot;6&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mfBootstrapPaginator&nbsp;[rowsOnPageSet]&#x3D;&quot;[5,10,25]&quot;&gt;&lt;/mfBootstrapPaginator&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tfoot&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/table&gt;<br>&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&#x27;card-footer&#x27;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button&nbsp;*ngIf&#x3D;&#x27;options.csv&#x27;&nbsp;class&#x3D;&#x27;btn&nbsp;btn-primary&nbsp;&#x27;&nbsp;(click)&#x3D;&#x27;exportToCSV()&#x27;&gt;&lt;i&nbsp;class&#x3D;&#x27;fa&nbsp;fa-file-excel-o&#x27;&gt;&nbsp;{{options.csv.label}}&lt;/i&gt;&lt;/button&gt;<br>&nbsp;&nbsp;&lt;/div&gt;<br>&lt;/div&gt;</code></td>
+                <td class="col-md-9"><code>&lt;div&nbsp;class&#x3D;&quot;card&quot;&gt;<br>&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;card-header&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;strong&nbsp;*ngIf&#x3D;&#x27;options.title&#x27;&nbsp;&gt;{{options.title}}&lt;/strong&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;button&nbsp;*ngIf&#x3D;&#x27;options.create&#x27;&nbsp;class&#x3D;&#x27;btn&nbsp;btn-success&nbsp;pull-right&#x27;&nbsp;(click)&#x3D;&#x27;onAction(null,&nbsp;&quot;create&quot;)&#x27;&gt;&lt;i&nbsp;class&#x3D;&#x27;fa&nbsp;fa-plus&#x27;&gt;&nbsp;{{options.create.label}}&lt;/i&gt;&lt;/button&gt;<br>&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&quot;card-block&nbsp;scroll-x&quot;&gt;<br><br>&nbsp;&nbsp;&lt;tw-reactive-form&nbsp;*ngIf&#x3D;&#x27;options.filters&#x27;&nbsp;[fields]&#x3D;&#x27;options.filters&#x27;&nbsp;[form]&#x3D;&#x27;form&#x27;&nbsp;[request]&#x3D;&#x27;filtersModel&#x27;&gt;&lt;/tw-reactive-form&gt;<br><br>&nbsp;&nbsp;{{filtersModel&nbsp;|&nbsp;json}}<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;table&nbsp;class&#x3D;&quot;table&nbsp;table-striped&nbsp;table-bordered&nbsp;tickets-list&nbsp;table-responsive&quot;&nbsp;[mfData]&#x3D;&quot;displayedItems&quot;&nbsp;#mf&#x3D;&quot;mfDataTable&quot;&nbsp;[mfRowsOnPage]&#x3D;&quot;20&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;thead&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&nbsp;*ngFor&#x3D;&#x27;let&nbsp;field&nbsp;of&nbsp;fields&#x27;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mfDefaultSorter&nbsp;by&#x3D;&quot;{{field.field}}&quot;&nbsp;*ngIf&#x3D;&#x27;field.field&#x27;&gt;{{field.label&nbsp;||&nbsp;field.field}}&lt;/mfDefaultSorter&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/th&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/thead&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tbody&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&nbsp;*ngFor&#x3D;&quot;let&nbsp;item&nbsp;of&nbsp;mf.data;let&nbsp;i&nbsp;&#x3D;&nbsp;index&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&nbsp;*ngFor&#x3D;&#x27;let&nbsp;field&nbsp;of&nbsp;fields&#x27;&nbsp;[ngClass]&#x3D;&quot;field.class&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&#x27;field.tag&#x27;&nbsp;class&#x3D;&quot;tag&nbsp;tag-info&quot;&nbsp;[ngClass]&#x3D;&quot;item[field.field]&quot;&gt;{{item[field.field]}}&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&#x27;field.boolean&#x27;&nbsp;class&#x3D;&quot;tag&quot;&nbsp;[ngClass]&#x3D;&quot;item[field.field]&nbsp;?&nbsp;&#x27;tag-success&#x27;&nbsp;:&nbsp;&#x27;tag-danger&#x27;&quot;&gt;&lt;i&nbsp;class&#x3D;&#x27;fa&#x27;&nbsp;[ngClass]&#x3D;&quot;item[field.field]&nbsp;?&nbsp;&#x27;fa-thumbs-up&#x27;&nbsp;:&nbsp;&#x27;fa-thumbs-down&#x27;&quot;&gt;&lt;/i&gt;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&#x27;field.text&#x27;&gt;{{item[field.field]&nbsp;|&nbsp;twDash}}&lt;/span&gt;<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;*ngFor&#x3D;&#x27;let&nbsp;action&nbsp;of&nbsp;field.actions&#x27;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button&nbsp;*ngIf&#x3D;&#x27;action.type&#x3D;&#x3D;&#x3D;&quot;button&quot;&nbsp;&amp;&amp;&nbsp;showWithConditions(action,&nbsp;item[action.condition])&#x27;&nbsp;class&#x3D;&#x27;btn&nbsp;btn-{{action.class}}&nbsp;btn-sm&#x27;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(click)&#x3D;&#x27;onAction(i,&nbsp;action.action,&nbsp;item)&#x27;&gt;&lt;i&nbsp;class&#x3D;&quot;fa&nbsp;fa-{{action.icon}}&quot;&gt;&lt;/i&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{action.text}}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/button&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngIf&#x3D;&#x27;action.type&#x3D;&#x3D;&#x3D;&quot;text&quot;&nbsp;&nbsp;&amp;&amp;&nbsp;showWithConditions(action,&nbsp;item[action.condition])&#x27;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{action.text}}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;*ngIf&#x3D;&#x27;field.list&#x27;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;*ngFor&#x3D;&#x27;let&nbsp;l&nbsp;of&nbsp;item[field.list];let&nbsp;j&nbsp;&#x3D;&nbsp;index&#x27;&nbsp;(click)&#x3D;&#x27;onAction(j,&nbsp;field.action,&nbsp;item,&nbsp;l)&#x27;&nbsp;[ngClass]&#x3D;&#x27;l[field.classAttr]&#x27;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&#x3D;&#x27;{{field.classLi}}&#x27;&gt;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tbody&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tfoot&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&nbsp;colspan&#x3D;&quot;6&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mfBootstrapPaginator&nbsp;[rowsOnPageSet]&#x3D;&quot;[5,10,25]&quot;&gt;&lt;/mfBootstrapPaginator&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tfoot&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/table&gt;<br>&nbsp;&nbsp;&lt;/div&gt;<br>&nbsp;&nbsp;&lt;div&nbsp;class&#x3D;&#x27;card-footer&#x27;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button&nbsp;*ngIf&#x3D;&#x27;options.csv&#x27;&nbsp;class&#x3D;&#x27;btn&nbsp;btn-primary&nbsp;&#x27;&nbsp;(click)&#x3D;&#x27;exportToCSV()&#x27;&gt;&lt;i&nbsp;class&#x3D;&#x27;fa&nbsp;fa-file-excel-o&#x27;&gt;&nbsp;{{options.csv.label}}&lt;/i&gt;&lt;/button&gt;<br>&nbsp;&nbsp;&lt;/div&gt;<br>&lt;/div&gt;</code></td>
             </tr>
 
 
@@ -356,6 +356,60 @@
 
     <section>
         <h3 id="methods">Methods</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> updateFilters</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <span class="modifier-icon method fa fa-play circle">
+                                    <span class="fa fa-circle"></span>
+                                </span>
+                            <code>updateFilters(filter: string, values: any[])</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> search</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <span class="modifier-icon method fa fa-play circle">
+                                    <span class="fa fa-circle"></span>
+                                </span>
+                            <code>search()</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
             <table class="table table-sm table-bordered">
                 <tbody>
                     <tr>
@@ -476,6 +530,21 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
+                            <b><span class="modifier">Public</span> displayedItems</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-circle"></span><code>displayedItems:     <code>any</code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
                             <b><span class="modifier">Public</span> EOL</b>
                         </td>
                     </tr>
@@ -493,10 +562,72 @@
                         </tr>
                 </tbody>
             </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> filters</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-circle"></span><code>filters:     <code>any[]</code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> filtersModel</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-circle"></span><code>filtersModel:     <code>any</code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> form</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-circle"></span><code>form:     <code><a href="https://angular.io/docs/ts/latest/api/forms/index/FormGroup-class.html" target="_blank" >FormGroup</a></code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Public</span> keyword</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-circle"></span><code>keyword:     <code>string</code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
     </section>
 </div>
         <div class="tab-pane fade tab-source-code" id="source">
-            <pre><code class="hljs javascript">import { Component, Input, Output, EventEmitter } from &#x27;@angular/core&#x27;;
+            <pre><code class="hljs javascript">import { Component, EventEmitter, Input, OnInit, Output, AfterViewInit } from &#x27;@angular/core&#x27;;
+import { FormGroup } from &#x27;@angular/forms&#x27;
+import { FormField } from &#x27;angular-forms-utils&#x27;
 
 @Component({
   selector: &#x27;tw-table&#x27;,
@@ -507,7 +638,11 @@
         &lt;button *ngIf&#x3D;&#x27;options.create&#x27; class&#x3D;&#x27;btn btn-success pull-right&#x27; (click)&#x3D;&#x27;onAction(null, &quot;create&quot;)&#x27;&gt;&lt;i class&#x3D;&#x27;fa fa-plus&#x27;&gt; {{options.create.label}}&lt;/i&gt;&lt;/button&gt;
       &lt;/div&gt;
       &lt;div class&#x3D;&quot;card-block scroll-x&quot;&gt;
-        &lt;table class&#x3D;&quot;table table-striped table-bordered tickets-list table-responsive&quot; [mfData]&#x3D;&quot;items&quot; #mf&#x3D;&quot;mfDataTable&quot; [mfRowsOnPage]&#x3D;&quot;20&quot;&gt;
+
+      &lt;tw-reactive-form *ngIf&#x3D;&#x27;options.filters&#x27; [fields]&#x3D;&#x27;options.filters&#x27; [form]&#x3D;&#x27;form&#x27; [request]&#x3D;&#x27;filtersModel&#x27;&gt;&lt;/tw-reactive-form&gt;
+
+      {{filtersModel | json}}
+        &lt;table class&#x3D;&quot;table table-striped table-bordered tickets-list table-responsive&quot; [mfData]&#x3D;&quot;displayedItems&quot; #mf&#x3D;&quot;mfDataTable&quot; [mfRowsOnPage]&#x3D;&quot;20&quot;&gt;
           &lt;thead&gt;
             &lt;tr&gt;
               &lt;th *ngFor&#x3D;&#x27;let field of fields&#x27;&gt;
@@ -552,7 +687,7 @@
       &lt;/div&gt;
     &lt;/div&gt;&#x60;
 })
-export class TableComponent {
+export class TableComponent implements OnInit, AfterViewInit {
 
   @Input() items: any
   @Input() fields: any[]
@@ -563,6 +698,62 @@ export class TableComponent {
   public EOL: string &#x3D; &#x27;\r\n&#x27;;
   public BOM: string &#x3D; &#x27;\ufeff&#x27;;
   public DEFAULT_FIELD_SEPARATOR: string &#x3D; &#x27;;&#x27;;
+
+  public form: FormGroup &#x3D; new FormGroup({});
+  public filtersModel: any &#x3D; {}
+
+  public filters: any[] &#x3D; []
+  public keyword: string
+
+  public displayedItems: any
+
+  ngOnInit(): void {
+    this.displayedItems &#x3D; this.items
+
+
+  }
+
+  ngAfterViewInit(): void {
+    if (this.options.filters) {
+      this.options.filters.forEach((filter: FormField) &#x3D;&gt; {
+        if (filter.type &#x3D;&#x3D;&#x3D; &#x27;select&#x27;)
+          filter.options &#x3D; this.items
+        filter.control.valueChanges.subscribe((value: any) &#x3D;&gt; {
+          this.updateFilters(filter.id, value)
+        })
+      })
+    }
+  }
+
+
+  public updateFilters(filter: string, values?: any[]): void {
+    this.filters[filter] &#x3D; values
+    this.search()
+  }
+
+
+  public search(): void {
+
+    this.displayedItems &#x3D; this.items.filter((data: any) &#x3D;&gt; {
+      /*FILTERS*/
+      if (this.options.filters)
+        for (var i in this.filters) {
+          if (!(new RegExp(&#x27;(&#x27; + this.filters[i] + &#x27;)&#x27;, &#x27;i&#x27;).test(data[i].toString()) || !this.filters[i] || this.filters[i].toString() &#x3D;&#x3D;&#x3D; &#x27;&#x27;))
+            return false
+        }
+
+      /*FULL TEXT*/
+      if (this.options.fulltext)
+        for (var j in this.options.fulltext) {
+          let test: string &#x3D; data[this.options.fulltext[j]] ? data[this.options.fulltext[j]].toString() : &#x27;&#x27;
+          if (!(new RegExp(this.keyword, &#x27;i&#x27;)).test(test))
+            return false
+        }
+
+      return true
+    })
+
+  }
 
 
   onAction(index: number, type: string, item: any &#x3D; null, subItem: any &#x3D; null): void {

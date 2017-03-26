@@ -285,13 +285,14 @@ import { CommonModule } from &#x27;@angular/common&#x27;;
 import { TableComponent } from &#x27;./table.component&#x27;;
 import { DashPipe } from &#x27;./pipes/dash.pipe&#x27;;
 import { DataTableModule } from &#x27;angular2-datatable&#x27;;
+import { AngularFormsUtilsModule } from &#x27;angular-forms-utils&#x27;
 
 @NgModule({
   declarations: [
     TableComponent,
     DashPipe
   ],
-  imports: [CommonModule, DataTableModule],
+  imports: [CommonModule, DataTableModule, AngularFormsUtilsModule],
   exports: [TableComponent, DashPipe]
 })
 export class AngularTableUtilsModule {
