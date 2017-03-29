@@ -29,11 +29,11 @@ import { FormField } from 'angular-forms-utils'
                 <span *ngIf='field.text'>{{getValue(item, field.field) | twDash}}</span>
 
                 <div *ngFor='let action of field.actions'>
-                  <button *ngIf='action.type==="button" && showWithConditions(action, item[action.condition])' class='btn btn-{{action.class}} btn-sm'
+                  <button *ngIf='action.type==="button" && showWithConditions(action, item)' class='btn btn-{{action.class}} btn-sm'
                     (click)='onAction(i, action.action, item)'><i class="fa fa-{{action.icon}}"></i> 
                     {{action.text}}
                     </button>
-                  <span *ngIf='action.type==="text"  && showWithConditions(action, item[action.condition])'>
+                  <span *ngIf='action.type==="text"  && showWithConditions(action, item)'>
                     {{action.text}}
                     </span>
                 </div>
@@ -150,15 +150,21 @@ export class TableComponent implements OnInit, AfterViewInit, OnChanges {
       }
     )
   }
-  showWithConditions(action: any, itemValue: any): boolean {
-    if (
-      (action.condition && itemValue === action.conditionValue)
-      || !action.condition
-      || (action.nConditionValue && (action.condition && itemValue !== action.nConditionValue))
-    )
-      return true
 
-    return false
+  showWithConditions(action: any, item: any): boolean {
+    let good: boolean = true
+
+    if (action.conditions) {
+      action.conditions.forEach((cond: any) => {
+        if (cond.conditionValue && this.getValue(item, cond.condition) != cond.conditionValue)
+          good = false
+
+        if (cond.nConditionValue && this.getValue(item, cond.condition) == cond.nConditionValue)
+          good = false
+      })
+    }
+
+    return good
   }
   exportToCSV(): void {
 
