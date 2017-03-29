@@ -83,7 +83,10 @@ export class TableComponent implements OnInit, AfterViewInit, OnChanges {
     let value: any = item
     if (fieldId) {
       let split: string[] = fieldId.split('.')
-      split.forEach((v: string) => value = value[v])
+      split.forEach((v: string) => {
+        if (value[v])
+          value = value[v]
+      })
       return value
     }
     return ''
