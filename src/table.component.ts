@@ -24,9 +24,9 @@ import { FormField } from 'angular-forms-utils'
           <tbody>
             <tr *ngFor="let item of mf.data;let i = index">
               <td *ngFor='let field of fields' [ngClass]="field.class">
-                <span *ngIf='field.tag' class="tag tag-info" [ngClass]="item[field.field]">{{item[field.field]}}</span>
-                <span *ngIf='field.boolean' class="tag" [ngClass]="item[field.field] ? 'tag-success' : 'tag-danger'"><i class='fa' [ngClass]="item[field.field] ? 'fa-thumbs-up' : 'fa-thumbs-down'"></i></span>
-                <span *ngIf='field.text'>{{item[field.field] | twDash}}</span>
+                <span *ngIf='field.tag' class="tag tag-info" [ngClass]="getValue(item, field.field)">{{getValue(item, field.field)}}</span>
+                <span *ngIf='field.boolean' class="tag" [ngClass]="getValue(item, field.field) ? 'tag-success' : 'tag-danger'"><i class='fa' [ngClass]="getValue(item, field.field) ? 'fa-thumbs-up' : 'fa-thumbs-down'"></i></span>
+                <span *ngIf='field.text'>{{getValue(item, field.field) | twDash}}</span>
 
                 <div *ngFor='let action of field.actions'>
                   <button *ngIf='action.type==="button" && showWithConditions(action, item[action.condition])' class='btn btn-{{action.class}} btn-sm'
@@ -77,6 +77,17 @@ export class TableComponent implements OnInit, AfterViewInit, OnChanges {
   public keyword: string
 
   public displayedItems: any
+
+
+  getValue(item: any, fieldId: string): string {
+    let value: any = item
+    if (fieldId) {
+      let split: string[] = fieldId.split('.')
+      split.forEach((v: string) => value = value[v])
+      return value
+    }
+    return ''
+  }
 
   ngOnInit(): void {
     this.displayedItems = this.items
@@ -192,7 +203,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnChanges {
       let row: string[] = []
       this.fields.forEach((field: any) => {
         if (!field.actions)
-          row.push(item[field.field])
+          row.push(this.getValue(item, field.field))
       })
       rows.push(row.join(this.DEFAULT_FIELD_SEPARATOR))
     })

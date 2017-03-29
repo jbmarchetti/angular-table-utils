@@ -9,10 +9,10 @@ export class DemoComponent {
 
   items: any[] =
   [
-    { id: 1, name: 'JB', active: true },
-    { id: 2, name: 'Bib', active: true },
-    { id: 3, name: 'Alex', active: false },
-    { id: 4, name: 'Carlu', active: true },
+    { id: 1, name: 'JB', active: true, address: { zip: 20000 } },
+    { id: 2, name: 'Bib', active: true, address: { zip: 20000 } },
+    { id: 3, name: 'Alex', active: false, address: { zip: 10000 } },
+    { id: 4, name: 'Carlu', active: true, address: { zip: 30000 } },
   ]
 
   tableOptions: any =
@@ -35,7 +35,8 @@ export class DemoComponent {
   [
     { field: 'id', text: true, label: 'Id' },
     { field: 'name', text: true, label: 'Name' },
-    { field: 'active', boolean: true, label: 'Active' }
+    { field: 'active', boolean: true, label: 'Active' },
+    { field: 'address.zip', text: true, label: 'Zip' }
   ]
 
   actionCallBack($event: any): void {
