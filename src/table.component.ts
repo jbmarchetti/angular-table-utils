@@ -156,10 +156,10 @@ export class TableComponent implements OnInit, AfterViewInit, OnChanges {
 
     if (action.conditions) {
       action.conditions.forEach((cond: any) => {
-        if (cond.conditionValue && this.getValue(item, cond.condition) != cond.conditionValue)
+        if (cond.conditionValue && this.getValue(item, cond.condition) !== cond.conditionValue)
           good = false
 
-        if (cond.nConditionValue && this.getValue(item, cond.condition) == cond.nConditionValue)
+        if (cond.nConditionValue && this.getValue(item, cond.condition) === cond.nConditionValue)
           good = false
       })
     }
