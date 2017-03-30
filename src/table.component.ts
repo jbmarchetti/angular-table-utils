@@ -169,6 +169,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnChanges {
 
     return good
   }
+
   exportToCSV(): void {
 
     let csv: string
@@ -195,7 +196,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnChanges {
 	/**
 	 * Create Headers
 	 */
-  private getCSVHeaders(): string {
+  protected getCSVHeaders(): string {
     let row: string[] = []
     this.fields.forEach((field: any) => {
       if (!field.actions)
@@ -206,7 +207,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnChanges {
   /**
    * Create Body
    */
-  private getCSVBody(): string {
+  protected getCSVBody(): string {
     let rows: string[] = []
     this.items.forEach((item: any) => {
       let row: string[] = []
