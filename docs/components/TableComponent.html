@@ -506,6 +506,64 @@
                     </tr>
                 </tbody>
             </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Protected</span> getCSVHeaders</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <span class="modifier-icon method fa fa-play lock">
+                                    <span class="fa fa-lock"></span>
+                                </span>
+                            <code>getCSVHeaders()</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Create Headers</p>
+    </div>
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>string</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Protected</span> getCSVBody</b>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <span class="modifier-icon method fa fa-play lock">
+                                    <span class="fa fa-lock"></span>
+                                </span>
+                            <code>getCSVBody()</code>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Create Body</p>
+    </div>
+                                <div class="io-description">
+                                    <b>Returns: </b>    <code>string</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
     </section>
 
     <section>
@@ -820,6 +878,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnChanges {
 
     return good
   }
+
   exportToCSV(): void {
 
     let csv: string
@@ -846,7 +905,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnChanges {
 	/**
 	 * Create Headers
 	 */
-  private getCSVHeaders(): string {
+  protected getCSVHeaders(): string {
     let row: string[] &#x3D; []
     this.fields.forEach((field: any) &#x3D;&gt; {
       if (!field.actions)
@@ -857,7 +916,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnChanges {
   /**
    * Create Body
    */
-  private getCSVBody(): string {
+  protected getCSVBody(): string {
     let rows: string[] &#x3D; []
     this.items.forEach((item: any) &#x3D;&gt; {
       let row: string[] &#x3D; []
