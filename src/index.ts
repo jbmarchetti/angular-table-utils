@@ -1,2 +1,2 @@
 export * from './angularTableUtils.module';
-import { TableComponent } from './table.component';
+export { TableComponent } from './table.component';
