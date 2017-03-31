@@ -21,6 +21,7 @@ export class DemoComponent {
     csv: { label: 'CSV Export', title: 'Components csv' },
     create: { label: 'Create a new component' },
     filters: [
+      new FormField(<IFormField>{ id: 'name', type: 'text' }),
       new FormField(<IFormField>{ id: 'id', type: 'select', label: 'Name filter', options: [false], optionText: 'name', optionValue: 'id', firstValue: { text: 'Tous' } }),
       new FormField(<IFormField>{ id: 'active', type: 'boolean', label: 'Active filter' }),
       // new FormField(<IFormField>{ id: 'name', type: 'select', label: 'Input Number' }),

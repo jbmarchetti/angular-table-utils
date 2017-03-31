@@ -60,7 +60,18 @@ import { FormField } from 'angular-forms-utils'
 })
 export class TableComponent implements OnInit, AfterViewInit, OnChanges {
 
-  @Input() items: any
+  _items: any
+
+  @Input()
+  set items(items: any) {
+    this.displayedItems = items
+    this._items = items
+  }
+
+  get items(): any {
+    return this._items
+  }
+
   @Input() fields: any[]
   @Input() options: any
 
@@ -93,7 +104,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   ngOnInit(): void {
-    this.displayedItems = this.items
+    // this.displayedItems = this.items
   }
 
   ngOnChanges(changes: SimpleChanges): void {
