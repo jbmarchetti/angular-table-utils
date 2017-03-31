@@ -311,10 +311,6 @@
                             <code>items</code>
                         </td>
                         <td class="col-md-10">
-                              <p>
-                                <em>Type:</em>    <code>any</code>
-
-                              </p>
                         </td>
                     </tr>
                 </tbody>
@@ -572,6 +568,21 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
+                            <b> _items</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>_items:     <code>any</code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
                             <b><span class="modifier">Public</span> BOM</b>
                         </td>
                     </tr>
@@ -693,6 +704,21 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
+                            <b> items</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>items:     <code>any</code>
+    </bcode>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
                             <b><span class="modifier">Public</span> keyword</b>
                         </td>
                     </tr>
@@ -769,7 +795,18 @@ import { FormField } from &#x27;angular-forms-utils&#x27;
 })
 export class TableComponent implements OnInit, AfterViewInit, OnChanges {
 
-  @Input() items: any
+  _items: any
+
+  @Input()
+  set items(items: any) {
+    this.displayedItems &#x3D; items
+    this._items &#x3D; items
+  }
+
+  get items(): any {
+    return this._items
+  }
+
   @Input() fields: any[]
   @Input() options: any
 
@@ -802,7 +839,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   ngOnInit(): void {
-    this.displayedItems &#x3D; this.items
+    // this.displayedItems &#x3D; this.items
   }
 
   ngOnChanges(changes: SimpleChanges): void {
