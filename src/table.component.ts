@@ -66,7 +66,6 @@ export class TableComponent implements AfterViewInit {
   set items(items: any) {
     this.displayedItems = items
     this._items = items
-    console.log('set items')
   }
 
   get items(): any {
