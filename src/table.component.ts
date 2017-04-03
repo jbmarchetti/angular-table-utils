@@ -58,7 +58,7 @@ import { FormField } from 'angular-forms-utils'
       </div>
     </div>`
 })
-export class TableComponent implements OnInit, AfterViewInit, OnChanges {
+export class TableComponent implements AfterViewInit {
 
   _items: any
 
@@ -66,6 +66,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnChanges {
   set items(items: any) {
     this.displayedItems = items
     this._items = items
+    console.log('set items')
   }
 
   get items(): any {
@@ -95,7 +96,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnChanges {
     if (fieldId) {
       let split: string[] = fieldId.split('.')
       split.forEach((v: string) => {
-        if (value[v])
+        if (value)
           value = value[v]
       })
       return value
@@ -103,13 +104,13 @@ export class TableComponent implements OnInit, AfterViewInit, OnChanges {
     return ''
   }
 
-  ngOnInit(): void {
-    // this.displayedItems = this.items
-  }
+  // ngOnInit(): void {
+  //   // this.displayedItems = this.items
+  // }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    this.displayedItems = changes['items'].currentValue
-  }
+  // ngOnChanges(changes: SimpleChanges): void {
+  //   this.displayedItems = changes['items'].currentValue
+  // }
 
   ngAfterViewInit(): void {
     if (this.options.filters) {
