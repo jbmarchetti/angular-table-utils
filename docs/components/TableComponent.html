@@ -959,7 +959,7 @@ export class TableComponent implements AfterViewInit {
       let row: string[] &#x3D; []
       this.fields.forEach((field: any) &#x3D;&gt; {
         if (!field.actions)
-          row.push(this.getValue(item, field.field))
+          row.push(&#x27;&quot;&#x27; + this.getValue(item, field.field) + &#x27;&quot;&#x27;)
       })
       rows.push(row.join(this.DEFAULT_FIELD_SEPARATOR))
     })
