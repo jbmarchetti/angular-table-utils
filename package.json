@@ -2,7 +2,7 @@
   "name": "angular-table-utils",
   "description": "Angular2 data table utils",
   "main": "./bundles/angular-table-utils.umd.js",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "module": "./index.js",
   "typings": "./index.d.ts",
   "scripts": {
@@ -101,6 +101,6 @@
   },
   "dependencies": {
     "angular-forms-utils": "^0.2.2",
-    "angular2-datatable": "^0.5.3"
+    "angular2-datatable": "^0.6.0"
   }
 }
