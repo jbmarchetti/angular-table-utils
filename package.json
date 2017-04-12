@@ -101,6 +101,6 @@
   },
   "dependencies": {
     "angular-forms-utils": "^0.2.2",
-    "angular2-datatable": "^0.5.3"
+    "angular2-datatable": "^0.6.0"
   }
 }

@@ -224,7 +224,7 @@ export class TableComponent implements AfterViewInit {
       let row: string[] = []
       this.fields.forEach((field: any) => {
         if (!field.actions)
-          row.push(this.getValue(item, field.field))
+          row.push('"' + this.getValue(item, field.field) + '"')
       })
       rows.push(row.join(this.DEFAULT_FIELD_SEPARATOR))
     })
