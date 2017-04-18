@@ -871,6 +871,9 @@ export class TableComponent implements AfterViewInit {
       /*FILTERS*/
       if (this.options.filters)
         for (var i in this.filters) {
+          if (!data[i])
+            return false
+
           if (!(new RegExp(&#x27;(&#x27; + this.filters[i] + &#x27;)&#x27;, &#x27;i&#x27;).test(data[i].toString()) || !this.filters[i] || this.filters[i].toString() &#x3D;&#x3D;&#x3D; &#x27;&#x27;))
             return false
         }
