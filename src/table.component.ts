@@ -136,6 +136,9 @@ export class TableComponent implements AfterViewInit {
       /*FILTERS*/
       if (this.options.filters)
         for (var i in this.filters) {
+          if (!data[i])
+            return false
+
           if (!(new RegExp('(' + this.filters[i] + ')', 'i').test(data[i].toString()) || !this.filters[i] || this.filters[i].toString() === ''))
             return false
         }
