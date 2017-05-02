@@ -13,7 +13,7 @@ import { FormField } from 'angular-forms-utils'
       <div class="card-block scroll-x">
       <strong *ngIf='options.filters' >Filtres</strong>
       <tw-reactive-form *ngIf='options.filters' [fields]='options.filters' [form]='form' [request]='filtersModel'></tw-reactive-form>
-        <table class="table table-striped table-bordered tickets-list table-responsive" [mfData]="displayedItems" #mf="mfDataTable" [mfRowsOnPage]="20">
+        <table class="table table-striped table-bordered tickets-list table-responsive" [mfData]="displayedItems" #mf="mfDataTable" [mfRowsOnPage]="options.rows || 20">
           <thead>
             <tr>
               <th *ngFor='let field of fields'>
