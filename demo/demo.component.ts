@@ -9,10 +9,10 @@ export class DemoComponent {
 
   items: any[] =
   [
-    { id: 1, name: 'JB', active: true, address: { zip: 20000 } },
-    { id: 2, name: 'Bib', active: true, address: { zip: 20000 } },
-    { id: 3, name: 'Alex', active: false, address: { zip: 10000 } },
-    { id: 4, name: 'Carlu', active: true, address: { zip: 30000 } },
+    { id: 1, name: 'JB', active: true, address: { zip: 20000, cityId: 1 } },
+    { id: 2, name: 'Bib', active: true, address: { zip: 20000, cityId: 2 } },
+    { id: 3, name: 'Alex', active: false, address: { zip: 10000, cityId: 1 } },
+    { id: 4, name: 'Carlu', active: true, address: { zip: 30000, cityId: 3 } },
   ]
 
   tableOptions: any =
@@ -37,8 +37,20 @@ export class DemoComponent {
     { field: 'id', text: true, label: 'Id' },
     { field: 'name', text: true, label: 'Name' },
     { field: 'active', boolean: true, label: 'Active' },
-    { field: 'address.zip', text: true, label: 'Zip' }
+    { field: 'address.zip', text: true, label: 'Zip' },
+    { field: 'address.cityId', text: true, label: 'City', fn: this.cityIdToLabel }
   ]
+
+  cityIdToLabel(value: any) {
+    let cities: any =
+      {
+        1: 'Bastia',
+        2: 'Isula Rossa',
+        3: 'Bisinchi'
+      }
+
+    return cities[value]
+  }
 
   actionCallBack($event: any): void {
     alert($event)

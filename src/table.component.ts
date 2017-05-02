@@ -24,9 +24,9 @@ import { FormField } from 'angular-forms-utils'
           <tbody>
             <tr *ngFor="let item of mf.data;let i = index">
               <td *ngFor='let field of fields' [ngClass]="field.class">
-                <span *ngIf='field.tag' class="tag tag-info" [ngClass]="getValue(item, field.field)">{{getValue(item, field.field)}}</span>
-                <span *ngIf='field.boolean' class="tag" [ngClass]="getValue(item, field.field) ? 'tag-success' : 'tag-danger'"><i class='fa' [ngClass]="getValue(item, field.field) ? 'fa-thumbs-up' : 'fa-thumbs-down'"></i></span>
-                <span *ngIf='field.text'>{{getValue(item, field.field) | twDash}}</span>
+                <span *ngIf='field.tag' class="tag tag-info" [ngClass]="getValue(item, field.field, field.fn)">{{getValue(item, field.field, field.fn)}}</span>
+                <span *ngIf='field.boolean' class="tag" [ngClass]="getValue(item, field.field, field.fn) ? 'tag-success' : 'tag-danger'"><i class='fa' [ngClass]="getValue(item, field.field, field.fn) ? 'fa-thumbs-up' : 'fa-thumbs-down'"></i></span>
+                <span *ngIf='field.text'>{{getValue(item, field.field, field.fn) | twDash}}</span>
 
                 <div *ngFor='let action of field.actions'>
                   <button *ngIf='action.type==="button" && showWithConditions(action, item)' class='btn btn-{{action.class}} btn-sm'
@@ -90,7 +90,7 @@ export class TableComponent implements AfterViewInit {
   public displayedItems: any
 
 
-  getValue(item: any, fieldId: string): string {
+  getValue(item: any, fieldId: string, fn?: any): string {
     let value: any = item
     if (fieldId) {
       let split: string[] = fieldId.split('.')
@@ -98,7 +98,7 @@ export class TableComponent implements AfterViewInit {
         if (value)
           value = value[v]
       })
-      return value
+      return fn ? fn(value) : value
     }
     return ''
   }
@@ -227,7 +227,7 @@ export class TableComponent implements AfterViewInit {
       let row: string[] = []
       this.fields.forEach((field: any) => {
         if (!field.actions)
-          row.push('"' + this.getValue(item, field.field) + '"')
+          row.push('"' + this.getValue(item, field.field, field.fn) + '"')
       })
       rows.push(row.join(this.DEFAULT_FIELD_SEPARATOR))
     })
