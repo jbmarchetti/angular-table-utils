@@ -90,7 +90,7 @@ export class TableComponent implements AfterViewInit {
   public displayedItems: any
 
 
-  getValue(item: any, fieldId: string, fn?: any): string {
+  getValue(item: any, fieldId: string, fn?: any): any {
     let value: any = item
     if (fieldId) {
       let split: string[] = fieldId.split('.')
