@@ -369,7 +369,7 @@
                     <tr>
                         <td class="col-md-4">
                                 <div class="io-description">
-                                    <b>Returns: </b>    <code>string</code>
+                                    <b>Returns: </b>    <code>any</code>
     
                                 </div>
                         </td>
@@ -825,7 +825,7 @@ export class TableComponent implements AfterViewInit {
   public displayedItems: any
 
 
-  getValue(item: any, fieldId: string, fn?: any): string {
+  getValue(item: any, fieldId: string, fn?: any): any {
     let value: any &#x3D; item
     if (fieldId) {
       let split: string[] &#x3D; fieldId.split(&#x27;.&#x27;)
