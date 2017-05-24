@@ -879,12 +879,16 @@ export class TableComponent implements AfterViewInit {
         }
 
       /*FULL TEXT*/
-      if (this.options.fulltext)
+      if (this.options.fulltext &amp;&amp; this.keyword &amp;&amp; this.keyword !&#x3D;&#x3D; &#x27;&#x27;) {
+        // _this.fields.forEach(function (field) {
         for (var j in this.options.fulltext) {
-          let test: string &#x3D; data[this.options.fulltext[j]] ? data[this.options.fulltext[j]].toString() : &#x27;&#x27;
-          if (!(new RegExp(this.keyword, &#x27;i&#x27;)).test(test))
-            return false
+          if (new RegExp(&#x27;(&#x27; + this.keyword + &#x27;)&#x27;, &#x27;i&#x27;).test(this.getValue(data, this.options.fulltext[j].field, this.options.fulltext[j].fn)))
+            return true;
         }
+
+        return false
+      }
+
 
       return true
     })
