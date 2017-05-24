@@ -144,12 +144,16 @@ export class TableComponent implements AfterViewInit {
         }
 
       /*FULL TEXT*/
-      if (this.options.fulltext)
+      if (this.options.fulltext && this.keyword && this.keyword !== '') {
+        // _this.fields.forEach(function (field) {
         for (var j in this.options.fulltext) {
-          let test: string = data[this.options.fulltext[j]] ? data[this.options.fulltext[j]].toString() : ''
-          if (!(new RegExp(this.keyword, 'i')).test(test))
-            return false
+          if (new RegExp('(' + this.keyword + ')', 'i').test(this.getValue(data, this.options.fulltext[j].field, this.options.fulltext[j].fn)))
+            return true;
         }
+
+        return false
+      }
+
 
       return true
     })
