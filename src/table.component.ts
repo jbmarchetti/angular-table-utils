@@ -147,8 +147,7 @@ export class TableComponent implements AfterViewInit {
       if (this.options.fulltext && this.keyword && this.keyword !== '') {
         // _this.fields.forEach(function (field) {
         for (var j in this.options.fulltext) {
-          var test = this.getValue(data, this.options.fulltext[j].field, this.options.fulltext[j].fn)
-          if (new RegExp('(' + this.keyword + ')', 'i').test(test))
+          if (new RegExp('(' + this.keyword + ')', 'i').test(this.getValue(data, this.options.fulltext[j].field, this.options.fulltext[j].fn)))
             return true;
         }
 
