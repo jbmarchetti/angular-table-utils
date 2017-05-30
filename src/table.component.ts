@@ -98,7 +98,7 @@ export class TableComponent implements AfterViewInit {
         if (value)
           value = value[v]
       })
-      return fn ? fn(value) : value
+      return fn ? fn(value, item) : value
     }
     return ''
   }
