@@ -833,7 +833,7 @@ export class TableComponent implements AfterViewInit {
         if (value)
           value &#x3D; value[v]
       })
-      return fn ? fn(value) : value
+      return fn ? fn(value, item) : value
     }
     return &#x27;&#x27;
   }
