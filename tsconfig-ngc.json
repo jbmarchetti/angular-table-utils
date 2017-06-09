@@ -19,7 +19,7 @@
     "outDir": "dist"
   },
   "files": [
-    "src/index.ts"
+    "./src/index.ts"
   ],
   "angularCompilerOptions": {
     "genDir": "dist",

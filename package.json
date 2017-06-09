@@ -89,11 +89,13 @@
     "webpack-angular-externals": "^1.0.2",
     "webpack-dev-server": "^2.4.5",
     "webpack-rxjs-externals": "^1.0.0",
-    "zone.js": "^0.8.12"
+    "zone.js": "^0.8.12",
+    "angular-forms-utils": "^0.3.17"
   },
   "peerDependencies": {
     "@angular/common": ">=4.0.0",
-    "@angular/core": ">=4.0.0"
+    "@angular/core": ">=4.0.0",
+    "angular-forms-utils": ">=0.3.17"
   },
   "config": {
     "commitizen": {
@@ -101,7 +103,6 @@
     }
   },
   "dependencies": {
-    "angular-forms-utils": "^0.3.11",
     "angular2-datatable": "^0.6.0"
   }
 }

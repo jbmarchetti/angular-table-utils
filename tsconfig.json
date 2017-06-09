@@ -1,24 +1,31 @@
 {
+  "compileOnSave": true,
   "compilerOptions": {
-    "target": "ES5",
-    "module": "commonjs",
+    "target": "es5",
+    "module": "es2015",
     "moduleResolution": "node",
     "sourceMap": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
+    "declaration": true,
     "removeComments": false,
-    "noImplicitAny": false,
-    "lib": [
-      "es2015",
-      "dom"
-    ]
+    "noImplicitAny": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "pretty": true,
+    "stripInternal": true,
+    "skipLibCheck": true,
+    "noUnusedLocals": true,
+    "outDir": "dist"
   },
-  "include": [
-    "src/**/*",
-    "test/**/*",
-    "demos/**/*"
+  "files": [
+    "./src/index.ts"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "angularCompilerOptions": {
+    "genDir": "dist",
+    "debug": false,
+    "skipTemplateCodegen": true,
+    "skipMetadataEmit": false,
+    "strictMetadataEmit": true
+  }
 }
