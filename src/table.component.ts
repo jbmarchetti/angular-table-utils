@@ -123,7 +123,6 @@ export class TableComponent implements AfterViewInit {
     }
   }
 
-
   public updateFilters(filter: any, values?: any[]): void {
     this.filters[filter] = values
     this.search()
