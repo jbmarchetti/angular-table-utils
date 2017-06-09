@@ -1,61 +1,64 @@
-import * as path from 'path';
-import * as webpack from 'webpack';
-const angularExternals = require('webpack-angular-externals');
-const rxjsExternals = require('webpack-rxjs-externals');
-const pkg = require('./package.json');
+/**
+ * Adapted from angular2-webpack-starter
+ */
 
-export default {
-  entry: {
-    'angular-table-utils.umd': path.join(__dirname, 'src', 'index.ts'),
-    'angular-table-utils.umd.min': path.join(__dirname, 'src', 'index.ts'),
-  },
-  output: {
-    path: path.join(__dirname, 'dist', 'bundles'),
-    filename: '[name].js',
-    libraryTarget: 'umd',
-    library: 'angularTableUtils'
-  },
-  externals: [
-    angularExternals(),
-    rxjsExternals()
-  ],
-  devtool: 'source-map',
-  module: {
-    rules: [{
-      test: /\.ts$/,
-      loader: 'tslint-loader?emitErrors=true&failOnHint=true',
-      exclude: /node_modules/,
-      enforce: 'pre'
-    }, {
-      test: /\.ts$/,
-      loader: 'awesome-typescript-loader',
-      exclude: /node_modules/
-    }]
-  },
+const helpers = require('./config/helpers'),
+  webpack = require('webpack');
+
+/**
+ * Webpack Plugins
+ */
+const ProvidePlugin = require('webpack/lib/ProvidePlugin');
+const DefinePlugin = require('webpack/lib/DefinePlugin');
+const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
+
+module.exports = {
+  devtool: 'inline-source-map',
+
   resolve: {
     extensions: ['.ts', '.js']
   },
+
+  entry: helpers.root('./src/index.ts'),
+
+  output: {
+    path: helpers.root('bundles'),
+    publicPath: '/',
+    filename: 'angular-table-utils.umd.js',
+    libraryTarget: 'umd',
+    library: 'angularTableUtils'
+  },
+
+  // require those dependencies but don't bundle them
+  externals: [/^\@angular\//, /^rxjs\//],
+
+  module: {
+    rules: [{
+      enforce: 'pre',
+      test: /\.ts$/,
+      loader: 'tslint-loader',
+      exclude: [helpers.root('node_modules')]
+    }, {
+      test: /\.ts$/,
+      loader: 'awesome-typescript-loader?declaration=false',
+      exclude: [/\.e2e\.ts$/]
+    }]
+  },
+
   plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      include: /\.min\.js$/,
-      sourceMap: true
-    }),
+    // fix the warning in ./~/@angular/core/src/linker/system_js_ng_module_factory_loader.js
     new webpack.ContextReplacementPlugin(
       /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
-      path.join(__dirname, 'src')
+      helpers.root('./src')
     ),
-    new webpack.BannerPlugin({
-      banner: `
-/**
- * ${pkg.name} - ${pkg.description}
- * @version v${pkg.version}
- * @author ${pkg.author}
- * @link ${pkg.homepage}
- * @license ${pkg.license}
- */
-      `.trim(),
-      raw: true,
-      entryOnly: true
+
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        tslintLoader: {
+          emitErrors: false,
+          failOnHint: false
+        }
+      }
     })
   ]
 };

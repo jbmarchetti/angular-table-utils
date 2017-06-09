@@ -2,6 +2,36 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.0.34"></a>
+## [0.0.34](https://github.com/jbmarchetti/angular-table-utils/compare/v0.0.33...v0.0.34) (2017-06-09)
+
+
+
+<a name="0.0.33"></a>
+## [0.0.33](https://github.com/jbmarchetti/angular-table-utils/compare/v0.0.32...v0.0.33) (2017-06-09)
+
+
+
+<a name="0.0.32"></a>
+## [0.0.32](https://github.com/jbmarchetti/angular-table-utils/compare/v0.0.31...v0.0.32) (2017-06-09)
+
+
+
+<a name="0.0.31"></a>
+## [0.0.31](https://github.com/jbmarchetti/angular-table-utils/compare/v0.0.30...v0.0.31) (2017-06-09)
+
+
+
+<a name="0.0.30"></a>
+## [0.0.30](https://github.com/jbmarchetti/angular-table-utils/compare/v0.0.29...v0.0.30) (2017-06-09)
+
+
+
+<a name="0.0.29"></a>
+## [0.0.29](https://github.com/jbmarchetti/angular-table-utils/compare/v0.0.28...v0.0.29) (2017-06-09)
+
+
+
 <a name="0.0.28"></a>
 ## [0.0.28](https://github.com/jbmarchetti/angular-table-utils/compare/v0.0.27...v0.0.28) (2017-05-30)
 

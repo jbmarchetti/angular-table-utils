@@ -1,4 +1,4 @@
-import { AfterViewInit, OnChanges, Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms'
 import { FormField } from 'angular-forms-utils'
 
@@ -123,8 +123,7 @@ export class TableComponent implements AfterViewInit {
     }
   }
 
-
-  public updateFilters(filter: string, values?: any[]): void {
+  public updateFilters(filter: any, values?: any[]): void {
     this.filters[filter] = values
     this.search()
   }

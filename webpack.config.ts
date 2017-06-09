@@ -1,8 +1,9 @@
-import * as webpack from 'webpack';
-import * as path from 'path';
+const path = require('path'),
+  webpack = require('webpack');
+
 const IS_PROD: boolean = process.argv.indexOf('-p') > -1;
 
-export default {
+module.exports = {
   devtool: IS_PROD ? 'source-map' : 'eval',
   entry: path.join(__dirname, 'demo', 'entry.ts'),
   output: {
@@ -19,10 +20,16 @@ export default {
       test: /\.ts$/,
       loader: 'awesome-typescript-loader',
       exclude: /node_modules/
-    }]
+    },
+    {
+      test: /\.html$/,
+      loaders: [
+        "raw-loader",
+      ]
+    },]
   },
   resolve: {
-    extensions: ['.ts', '.js']
+    extensions: ['.ts', '.js', '.html']
   },
   devServer: {
     port: 8000,
