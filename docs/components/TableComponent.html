@@ -389,7 +389,7 @@
                                 <span class="modifier-icon method fa fa-play circle">
                                     <span class="fa fa-circle"></span>
                                 </span>
-                            <code>updateFilters(filter: string, values: any[])</code>
+                            <code>updateFilters(filter: any, values: any[])</code>
                         </td>
                     </tr>
     
@@ -733,7 +733,7 @@
     </section>
 </div>
         <div class="tab-pane fade tab-source-code" id="source">
-            <pre><code class="hljs javascript">import { AfterViewInit, OnChanges, Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from &#x27;@angular/core&#x27;;
+            <pre><code class="hljs javascript">import { AfterViewInit, Component, EventEmitter, Input, Output } from &#x27;@angular/core&#x27;;
 import { FormGroup } from &#x27;@angular/forms&#x27;
 import { FormField } from &#x27;angular-forms-utils&#x27;
 
@@ -858,8 +858,7 @@ export class TableComponent implements AfterViewInit {
     }
   }
 
-
-  public updateFilters(filter: string, values?: any[]): void {
+  public updateFilters(filter: any, values?: any[]): void {
     this.filters[filter] &#x3D; values
     this.search()
   }
