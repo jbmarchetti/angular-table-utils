@@ -9,9 +9,9 @@ export class DemoComponent {
 
   items: any[] =
   [
-    { id: 1, name: 'JB', active: true, address: { zip: 20000, cityId: 1 } },
-    { id: 2, name: 'Bib', active: true, address: { zip: 20000, cityId: 2 } },
-    { id: 3, name: 'Alex', active: false, address: { zip: 10000, cityId: 1 } },
+    { id: 1, name: 'JB', date: new Date(), active: true, address: { zip: 20000, cityId: 1 } },
+    { id: 2, name: 'Bib', datetime: new Date(), active: true, address: { zip: 20000, cityId: 2 } },
+    { id: 3, name: 'Alex', time: new Date(), active: false, address: { zip: 10000, cityId: 1 } },
     { id: 4, name: 'Carlu', active: true, address: { zip: 30000, cityId: 3 } },
   ]
 
@@ -37,6 +37,9 @@ export class DemoComponent {
     { field: 'id', text: true, label: 'Id' },
     { field: 'name', text: true, label: 'Name' },
     { field: 'active', boolean: true, label: 'Active' },
+    { field: 'date', date: true, label: 'Date' },
+    { field: 'datetime', datetime: true, label: 'Date Time' },
+    { field: 'time', time: true, label: 'Time' },
     { field: 'address.zip', text: true, label: 'Zip' },
     { field: 'address.cityId', text: true, label: 'City', fn: this.cityIdToLabel }
   ]
@@ -49,7 +52,7 @@ export class DemoComponent {
         3: 'Bisinchi'
       }
 
-    return cities[value]
+    return '<strong>' + cities[value] + '</strong>'
   }
 
   actionCallBack($event: any): void {
