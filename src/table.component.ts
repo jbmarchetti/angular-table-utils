@@ -26,7 +26,9 @@ import { FormField } from 'angular-forms-utils'
               <td *ngFor='let field of fields' [ngClass]="field.class">
                 <span *ngIf='field.tag' class="tag tag-info" [ngClass]="getValue(item, field.field, field.fn)">{{getValue(item, field.field, field.fn)}}</span>
                 <span *ngIf='field.boolean' class="tag" [ngClass]="getValue(item, field.field, field.fn) ? 'tag-success' : 'tag-danger'"><i class='fa' [ngClass]="getValue(item, field.field, field.fn) ? 'fa-thumbs-up' : 'fa-thumbs-down'"></i></span>
-                <span *ngIf='field.text'>{{getValue(item, field.field, field.fn) | twDash}}</span>
+                <span *ngIf='field.text' [innerHTML]="getValue(item, field.field, field.fn) | twDash"></span>
+                <span *ngIf='field.date'>{{getValue(item, field.field, field.fn) | date:'short'}}</span>
+
 
                 <div *ngFor='let action of field.actions'>
                   <button *ngIf='action.type==="button" && showWithConditions(action, item)' class='btn btn-{{action.class}} btn-sm'
